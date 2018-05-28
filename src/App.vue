@@ -1,28 +1,75 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+      <div class="sidebar">
+          <listSearch></listSearch>
+          <list></list>
+      </div>
+      <div class="main">
+          <message></message>
+          <messageText></messageText>
+      </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import { mapActions } from 'vuex'
+
+import ListSearch from './components/ListSearch';
+import List from './components/List';
+import Message from './components/Message';
+import MessageText from './components/Text';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components: { 
+        ListSearch,
+        List,
+        Message,
+        MessageText
+    },
+    methods: 
+        mapActions([
+            'initData'
+        ]),
+    created () { // インスタンスが作成された後に同期的に呼ばれる
+        this.initData();
+    }
 }
 </script>
 
-<style>
+<!-- スタイル -->
+<style lang="less" scoped>
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    .sidebar {
+        float: left;        
+        width: 200px;
+        height: 100vh;
+        color: #f7f7f7;
+        background-color: #2d2240;
+    }
+    .main {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        background-color: #eee;
+    }
+    .message {
+        height: ~'calc(100vh - 160px)';
+    }
+    .message-text {
+        position: absolute;
+        width: 100vw;
+        height: 160px;
+        bottom: 0;
+        left: 0;
+    }
 }
 </style>
