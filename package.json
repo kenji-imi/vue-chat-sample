@@ -2,7 +2,7 @@
   "name": "vue-chat-sample",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "kenji imai <kenji.imai@gmail.com>",
+  "author": "kenji imai <imakenfever@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
